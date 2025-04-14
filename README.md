@@ -19,7 +19,7 @@ MFRC522 RFID Reader Module
 
 RFID Tags or Cards
 
-Servo Motor (e.g., SG90)
+Servo Motor (e.g., SG90) / solanoide lock
 
 LEDs and Buzzer (optional for feedback)
 
