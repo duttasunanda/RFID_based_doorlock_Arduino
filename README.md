@@ -1,42 +1,76 @@
-🔐 RFID Based Door Lock System using Arduino
-This project is a simple and secure RFID-based door lock system built with Arduino. It uses an RFID reader to scan RFID tags/cards and controls a servo motor to lock or unlock the door based on access permissions.
 
-🧠 Key Features:
-Scans RFID cards using MFRC522 RFID Reader
+## 🚪 RFID Based Door Lock System (Arduino UNO + RC522 + Relay)
 
-Authenticates access with predefined card UIDs
+### 🔧 How It Works (Simple Steps)
 
-Controls a servo motor to open/close the lock
+This project lets you **control a door or solenoid lock using RFID cards**. Only authorized cards can unlock the door for a short time. Unauthorized cards will trigger a buzzer and red light.
 
-Unauthorized access attempts are denied with feedback (e.g., LED/Buzzer)
+---
 
-Easy to add/remove authorized cards via code
+### 📑 Process Overview
 
-🛠️ Hardware Used:
-Arduino Uno/Nano
+#### 1. 🔌 **Connect the Hardware**
 
-MFRC522 RFID Reader Module
+* Plug the **RC522 RFID module** to Arduino using SPI.
+* Connect a **relay module** to control a **solenoid lock or electric strike**.
+* Attach **LEDs and buzzer** for feedback.
 
-RFID Tags or Cards
+You’ll need:
 
-Servo Motor (e.g., SG90) / solanoide lock
+* Arduino UNO
+* RC522 RFID Reader
+* Relay Module
+* Solenoid Lock / Door Strike
+* Green & Red LEDs
+* Buzzer
+* Jumper Wires & Breadboard
 
-LEDs and Buzzer (optional for feedback)
+#### 2. 📥 **Upload the Code**
 
-Breadboard and jumper wires
+* Open the provided `.ino` file in the `Arduino IDE`.
+* Select the correct **COM port** and **board type (Arduino UNO)**.
+* Click **Upload**.
 
-📦 Applications:
-Smart home automation
+#### 3. 🧾 **Scan RFID Card**
 
-Office or personal space access control
+* Open **Serial Monitor** at `9600 baud`.
+* Tap any RFID card/tag to the reader.
+* You will see its **UID printed** in the Serial Monitor.
 
-Student lab entry systems
+#### 4. ✅ **Add UID to Code**
 
-DIY security projects
+* Copy the UID printed (like `04 A2 1C B3`) from Serial Monitor.
+* Replace the placeholder in this line of code:
 
-📁 Files:
-RFID_DoorLock.ino – Arduino sketch for door lock logic
+```cpp
+if (content.substring(1) == "XX XX XX XX")
+```
 
-README.md – Project overview and setup guide
+➡️ Like this:
 
-circuit_diagram.png – Wiring diagram for hardware connections
+```cpp
+if (content.substring(1) == "04 A2 1C B3")
+```
+
+* Save and re-upload the code.
+
+#### 5. 🔓 **Test the System**
+
+* Tap the **authorized RFID card**:
+
+  * ✅ Green LED turns ON
+  * ✅ Relay unlocks the door (2 seconds)
+* Tap **unauthorized cards**:
+
+  * ❌ Red LED turns ON
+  * ❌ Buzzer beeps (Access Denied)
+
+---
+
+### 💡 Extra Tips
+
+* Make sure to **power the solenoid** with an **external power supply** (not from Arduino).
+* Always use a **flyback diode** across the solenoid to protect components.
+* You can add **multiple UID cards** for multiple users.
+
+---
