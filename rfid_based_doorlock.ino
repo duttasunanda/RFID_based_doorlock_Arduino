@@ -57,10 +57,10 @@ void loop()
     Serial.println("Authorized access");
     Serial.println();
     delay(500);
-    digitalWrite(RELAY, LOW);
+    digitalWrite(RELAY, HIGH);
     digitalWrite(LED_G, HIGH);
     delay(ACCESS_DELAY);
-    digitalWrite(RELAY, HIGH);
+    digitalWrite(RELAY, LOW);
     digitalWrite(LED_G, LOW);
   }
  
