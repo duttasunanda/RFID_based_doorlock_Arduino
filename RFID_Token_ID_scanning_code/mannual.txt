@@ -1,0 +1,114 @@
+# 🔐 RFID Tag Scanner with Arduino UNO — Full Manual
+
+This guide will walk you step-by-step through building a simple but powerful RFID tag scanner using the **RC522 RFID Reader** and **Arduino UNO**. The final setup will scan any RFID token and display its **unique ID (UID)** in the **Serial Monitor**.
+
+
+## 🎯 Objective
+
+To build an Arduino-based RFID scanner that:
+
+* Detects an RFID tag/card/token when placed near the reader.
+* Displays its unique ID (UID) in the Serial Monitor.
+
+---
+
+## 🧰 Components Required
+
+| Component                | Quantity |
+| ------------------------ | -------- |
+| Arduino UNO              | 1        |
+| RC522 RFID Reader        | 1        |
+| RFID Token/Card          | 1+       |
+| Jumper Wires (Male-Male) | 8        |
+| Breadboard (optional)    | 1        |
+| USB Cable for Arduino    | 1        |
+
+---
+
+## 🧩 Circuit Diagram / Wiring
+
+Connect the **RC522 RFID Module** to the **Arduino UNO** as follows:
+
+| RC522 Pin | Arduino UNO Pin |
+| --------- | --------------- |
+| **SDA**   | D10             |
+| **SCK**   | D13             |
+| **MOSI**  | D11             |
+| **MISO**  | D12             |
+| **RST**   | D9              |
+| **3.3V**  | 3.3V            |
+| **GND**   | GND             |
+
+> ⚠️ **Important:** Always connect the RC522 to 3.3V, NOT 5V. The module is sensitive and can be damaged by 5V.
+
+---
+
+## 🛠️ Software Setup
+
+### 1. Install Arduino IDE
+
+Download and install the Arduino IDE from: [https://www.arduino.cc/en/software](https://www.arduino.cc/en/software)
+
+### 2. Install Required Library
+
+* Go to `Sketch > Include Library > Manage Libraries`
+* Search for **MFRC522** by GitHubCommunity
+* Click **Install**
+
+---
+
+
+## 🔎 How It Works
+
+* The **RFID module** emits an electromagnetic field.
+* When a **tag/token** comes near it, the module reads its **UID**.
+* The Arduino captures this UID and prints it to the **Serial Monitor**.
+
+---
+
+## 🧪 How to Test
+
+1. Open the Arduino IDE.
+2. Select the correct **Board** (`Arduino UNO`) and **Port**.
+3. Upload the code to the board.
+4. Go to `Tools > Serial Monitor` and set **baud rate to 9600**.
+5. Bring an RFID tag near the scanner.
+6. You’ll see the UID printed in the Serial Monitor like this:
+
+```
+Place your RFID tag near the scanner...
+RFID Tag UID: (3F 5A 77 B1) example 
+
+---
+
+## 🎨 Customization Ideas
+
+You can modify this project to:
+
+* Trigger a **relay** for door lock access.
+* Record scanned IDs to an **SD card** or **Firebase**.
+* Display UID on an **LCD screen**.
+* Allow access only to **authorized IDs**.
+
+Let me know if you want help with any of these!
+
+---
+
+## 💡 Troubleshooting
+
+| Issue                        | Solution                                   |
+| ---------------------------- | ------------------------------------------ |
+| Serial Monitor shows nothing | Check wiring and make sure RFID is close   |
+| Upload error in Arduino IDE  | Make sure the correct COM port is selected |
+| RC522 not detected           | Ensure it's connected to 3.3V, not 5V      |
+| UID not printing             | Recheck wiring and library installation    |
+
+---
+
+## 🏁 Conclusion
+
+You've just built a fully functional RFID scanner! You can now expand it into advanced projects like:
+
+* Smart door lock system
+* RFID-based attendance system
+* Inventory management with tags
